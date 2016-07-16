@@ -4,11 +4,11 @@ A simple android application which demonstrates the usage of some common librari
 
 The project is setup using:
 
-Unit tests with Mockito
-RxJava and RxAndroid
-Retrofit
-Dagger 2
-Butterknife
-Timber
-Mockito
-Glide
+- Unit tests with Mockito
+- RxJava and RxAndroid
+- Retrofit
+- Dagger 2
+- Butterknife
+- Timber
+- Mockito
+- Glide
