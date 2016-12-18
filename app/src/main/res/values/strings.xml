@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DTRR</string>
+    <string name="main_toast_weather_item_click">You clicked on %s</string>
+    <string name="main_error_connection">Failed to connect, please try again later</string>
+    <string name="main_menu_refresh">Refresh</string>
+    <string name="main_item_wind_speed">Wind %s m/s</string>
 </resources>
