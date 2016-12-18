@@ -1,4 +1,4 @@
-package com.tracchis.saopayne.dtrr.ui.activities;
+package com.tracchis.saopayne.dtrr.ui.presenter;
 
 
 import com.tracchis.saopayne.dtrr.data.model.Weather;

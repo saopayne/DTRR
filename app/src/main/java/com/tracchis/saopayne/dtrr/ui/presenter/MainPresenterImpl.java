@@ -1,10 +1,12 @@
-package com.tracchis.saopayne.dtrr.ui.activities;
+package com.tracchis.saopayne.dtrr.ui.presenter;
 
 
 import com.tracchis.saopayne.dtrr.data.model.Weather;
 import com.tracchis.saopayne.dtrr.data.model.service.WeatherApi;
 import com.tracchis.saopayne.dtrr.data.model.service.WeatherServiceImpl;
 import com.tracchis.saopayne.dtrr.ui.BasePresenter;
+import com.tracchis.saopayne.dtrr.ui.activities.MainView;
+import com.tracchis.saopayne.dtrr.ui.presenter.MainPresenter;
 import com.tracchis.saopayne.dtrr.util.EspressoIdlingResource;
 
 import java.util.List;

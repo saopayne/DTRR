@@ -1,7 +1,6 @@
 package com.tracchis.saopayne.dtrr.ui.activities;
 
 import android.os.Bundle;
-import android.support.annotation.VisibleForTesting;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +13,7 @@ import com.tracchis.saopayne.dtrr.data.adapter.WeatherListAdapter;
 import com.tracchis.saopayne.dtrr.data.model.Weather;
 import com.tracchis.saopayne.dtrr.data.model.service.WeatherServiceImpl;
 import com.tracchis.saopayne.dtrr.ui.BaseActivity;
+import com.tracchis.saopayne.dtrr.ui.presenter.MainPresenterImpl;
 
 import java.util.List;
 
