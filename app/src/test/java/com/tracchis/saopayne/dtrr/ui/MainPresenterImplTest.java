@@ -1,8 +1,8 @@
 package com.tracchis.saopayne.dtrr.ui;
 
 import com.tracchis.saopayne.dtrr.data.model.Weather;
-import com.tracchis.saopayne.dtrr.data.model.service.WeatherApi;
-import com.tracchis.saopayne.dtrr.data.model.service.WeatherServiceImpl;
+import com.tracchis.saopayne.dtrr.data.remote.service.WeatherApi;
+import com.tracchis.saopayne.dtrr.data.remote.service.WeatherServiceImpl;
 import com.tracchis.saopayne.dtrr.ui.activities.MainView;
 import com.tracchis.saopayne.dtrr.ui.presenter.MainPresenterImpl;
 

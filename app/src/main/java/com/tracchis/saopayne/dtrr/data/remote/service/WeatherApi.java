@@ -1,4 +1,4 @@
-package com.tracchis.saopayne.dtrr.data.model.service;
+package com.tracchis.saopayne.dtrr.data.remote.service;
 
 import com.tracchis.saopayne.dtrr.data.model.Weather;
 

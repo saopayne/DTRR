@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.tracchis.saopayne.dtrr.R;
 import com.tracchis.saopayne.dtrr.data.adapter.WeatherListAdapter;
 import com.tracchis.saopayne.dtrr.data.model.Weather;
-import com.tracchis.saopayne.dtrr.data.model.service.WeatherServiceImpl;
+import com.tracchis.saopayne.dtrr.data.remote.service.WeatherServiceImpl;
 import com.tracchis.saopayne.dtrr.ui.BaseActivity;
 import com.tracchis.saopayne.dtrr.ui.presenter.MainPresenterImpl;
 
