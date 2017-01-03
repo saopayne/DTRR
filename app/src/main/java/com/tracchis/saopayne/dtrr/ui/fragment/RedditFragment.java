@@ -12,10 +12,10 @@ import com.tracchis.saopayne.dtrr.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SOAnswers extends Fragment {
+public class RedditFragment extends Fragment {
 
 
-    public SOAnswers() {
+    public RedditFragment() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class SOAnswers extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_soanswers, container, false);
+        return inflater.inflate(R.layout.fragment_reddit, container, false);
     }
 
 }
