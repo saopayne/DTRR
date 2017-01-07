@@ -27,7 +27,7 @@ public class WeatherResponse {
     private Integer visibility;
     @SerializedName("weather")
     @Expose
-    private List<WindPOJO> windPOJOList;
+    private WindPOJO windPOJO;
     @SerializedName("clouds")
     @Expose
     private CloudPOJO clouds;
@@ -81,12 +81,12 @@ public class WeatherResponse {
         this.visibility = visibility;
     }
 
-    public List<WindPOJO> getWindPOJOList() {
-        return windPOJOList;
+    public WindPOJO getWindPOJO() {
+        return windPOJO;
     }
 
-    public void setWindPOJOList(List<WindPOJO> windPOJOList) {
-        this.windPOJOList = windPOJOList;
+    public void setWindPOJO(WindPOJO windPOJO) {
+        this.windPOJO = windPOJO;
     }
 
     public CloudPOJO getClouds() {
