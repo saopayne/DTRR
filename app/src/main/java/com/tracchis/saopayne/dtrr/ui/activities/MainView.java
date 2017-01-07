@@ -1,6 +1,7 @@
 package com.tracchis.saopayne.dtrr.ui.activities;
 
-import com.tracchis.saopayne.dtrr.data.model.Weather;
+
+import com.tracchis.saopayne.dtrr.data.model.WeatherResponse;
 
 import java.util.List;
 
@@ -8,7 +9,7 @@ import java.util.List;
 public interface MainView {
     void showProgress();
     void hideProgress();
-    void showWeatherClickedMessage(Weather s);
-    void showWeathers(List<Weather> weathers);
+    void showWeatherClickedMessage(WeatherResponse s);
+    void showWeathers(List<WeatherResponse> weathers);
     void showConnectionError();
 }

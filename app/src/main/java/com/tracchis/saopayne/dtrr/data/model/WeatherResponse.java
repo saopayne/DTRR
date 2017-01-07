@@ -18,7 +18,7 @@ public class WeatherResponse {
     private SunDetailsPOJO sys;
     @SerializedName("weather")
     @Expose
-    private java.util.List<Weather> weather = null;
+    private java.util.List<WeatherPOJO> weather = null;
     @SerializedName("main")
     @Expose
     private TemperaturePOJO main;
@@ -57,11 +57,11 @@ public class WeatherResponse {
         this.sys = sys;
     }
 
-    public java.util.List<Weather> getWeather() {
+    public java.util.List<WeatherPOJO> getWeather() {
         return weather;
     }
 
-    public void setWeather(java.util.List<Weather> weather) {
+    public void setWeather(java.util.List<WeatherPOJO> weather) {
         this.weather = weather;
     }
 
