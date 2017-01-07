@@ -16,8 +16,11 @@ import android.widget.Toast;
 
 import com.tracchis.saopayne.dtrr.R;
 import com.tracchis.saopayne.dtrr.data.adapter.WeatherListAdapter;
-import com.tracchis.saopayne.dtrr.data.model.Weather;
-import com.tracchis.saopayne.dtrr.data.remote.service.WeatherServiceImpl;
+
+import com.tracchis.saopayne.dtrr.data.model.WeatherResponse;
+import com.tracchis.saopayne.dtrr.data.remote.service.SOService;
+
+import com.tracchis.saopayne.dtrr.data.remote.utils.ApiUtils;
 import com.tracchis.saopayne.dtrr.ui.activities.MainView;
 import com.tracchis.saopayne.dtrr.ui.presenter.MainPresenterImpl;
 
@@ -45,8 +48,8 @@ public class WeatherFragment extends Fragment implements MainView, WeatherListAd
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView =  inflater.inflate(R.layout.fragment_weather, container, false);
-
-        mPresenter = new MainPresenterImpl(this, new WeatherServiceImpl());
+        SOService soService = ApiUtils.getRetrofitCreatedInstance(SOService.class);
+        mPresenter = new MainPresenterImpl(this, soService);
 
         initRecyclerView();
         initSwipeRefreshLayout();
@@ -97,12 +100,12 @@ public class WeatherFragment extends Fragment implements MainView, WeatherListAd
     }
 
     @Override
-    public void showWeatherClickedMessage(Weather s) {
-        Toast.makeText(this.getActivity(), String.format(getString(R.string.main_toast_weather_item_click), s.getCityName()), Toast.LENGTH_SHORT).show();
+    public void showWeatherClickedMessage(WeatherResponse s) {
+        Toast.makeText(this.getActivity(), String.format(getString(R.string.main_toast_weather_item_click), s.getName()), Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void showWeathers(List<Weather> weathers) {
+    public void showWeathers(List<WeatherResponse> weathers) {
         mWeatherListAdapter.replaceData(weathers);
     }
 
@@ -112,7 +115,7 @@ public class WeatherFragment extends Fragment implements MainView, WeatherListAd
     }
 
     @Override
-    public void onWeatherItemClick(Weather item) {
+    public void onWeatherItemClick(WeatherResponse item) {
         mPresenter.clickWeatherItem(item);
 
     }
