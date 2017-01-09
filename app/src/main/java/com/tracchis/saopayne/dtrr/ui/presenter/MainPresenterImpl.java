@@ -2,15 +2,13 @@ package com.tracchis.saopayne.dtrr.ui.presenter;
 
 
 
+import com.tracchis.saopayne.dtrr.data.model.ResponsePOJO;
 import com.tracchis.saopayne.dtrr.data.model.WeatherResponse;
 import com.tracchis.saopayne.dtrr.data.remote.service.SOService;
-import com.tracchis.saopayne.dtrr.data.remote.service.WeatherApi;
 
 import com.tracchis.saopayne.dtrr.ui.BasePresenter;
 import com.tracchis.saopayne.dtrr.ui.activities.MainView;
 import com.tracchis.saopayne.dtrr.util.EspressoIdlingResource;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,17 +31,18 @@ public class MainPresenterImpl extends BasePresenter implements MainPresenter {
 
     @Override
     public void loadWeatherData() {
-
         mView.showProgress();
-
         EspressoIdlingResource.increment();
-        Call<List<WeatherResponse>> getWeatherData = mWeatherApi.getListOfWeatherDetails();
-        getWeatherData.enqueue(new Callback<List<WeatherResponse>>() {
+        Call<ResponsePOJO> getWeatherData = mWeatherApi.getWeatherDetails();
+        getWeatherData.enqueue(new Callback<ResponsePOJO>() {
+
             @Override
-            public void onResponse(Response<List<WeatherResponse>> response) {
+            public void onResponse(Response<ResponsePOJO> response) {
                 EspressoIdlingResource.decrement();
                 mView.hideProgress();
-                mView.showWeathers(response.body());
+                if (response.body()!=null){
+                    mView.showWeathers(response.body());
+                }
             }
 
             @Override
@@ -52,6 +51,7 @@ public class MainPresenterImpl extends BasePresenter implements MainPresenter {
                 mView.showConnectionError();
                 mView.hideProgress();
             }
+
         });
     }
 

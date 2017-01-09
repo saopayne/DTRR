@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by Jubril on 1/4/17.
  */
 
-public class Response {
+public class ResponsePOJO {
     @SerializedName("cnt")
     @Expose
     private int cnt;
