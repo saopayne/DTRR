@@ -29,8 +29,8 @@ public class SOAnswersActivity extends BaseActivity {
     private SOService mService;
 
     @Override
-    protected void onCreate (Bundle savedInstanceState)  {
-        super.onCreate( savedInstanceState );
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_soanswers);
         mService = ApiUtils.getSOService();
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_answers);
@@ -71,7 +71,6 @@ public class SOAnswersActivity extends BaseActivity {
                 Log.d("error", t.toString());
                 Log.d("SOAnswersActivity", "error loading from API");
             }
-
         });
     }
 

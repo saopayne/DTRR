@@ -1,14 +1,14 @@
 package com.tracchis.saopayne.dtrr.ui.activities;
 
-import com.tracchis.saopayne.dtrr.data.model.Weather;
 
-import java.util.List;
+import com.tracchis.saopayne.dtrr.data.model.ResponsePOJO;
+import com.tracchis.saopayne.dtrr.data.model.WeatherResponse;
 
 
 public interface MainView {
     void showProgress();
     void hideProgress();
-    void showWeatherClickedMessage(Weather s);
-    void showWeathers(List<Weather> weathers);
+    void showWeatherClickedMessage(WeatherResponse s);
+    void showWeathers(ResponsePOJO responsePOJO);
     void showConnectionError();
 }

@@ -8,7 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.tracchis.saopayne.dtrr.R;
-import com.tracchis.saopayne.dtrr.data.model.Weather;
+
+import com.tracchis.saopayne.dtrr.data.model.WeatherResponse;
 import com.tracchis.saopayne.dtrr.util.MathUtil;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
     private final Context mContext;
     private final WeatherItemListener mListener;
 
-    private List<Weather> mList = new ArrayList<>();
+    private List<WeatherResponse> mList = new ArrayList<>();
 
     public WeatherListAdapter(Context context, WeatherItemListener listener) {
         mContext = context;
@@ -38,16 +39,16 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
 
     @Override
     public void onBindViewHolder(WeatherViewHolder holder, int position) {
-        Weather weather = mList.get(position);
+        WeatherResponse weather = mList.get(position);
 
         // \u00B0 is degree symbol
-        String temp = MathUtil.getNoDecimal(weather.getTemperature()) + "\u00B0";
-        String windSpeed = "Wind "+ MathUtil.getNoDecimal(weather.getWindSpeed()) +" m/s";
+        String temp = MathUtil.getNoDecimal(weather.getMain().getTemp()) + "\u00B0";
+        String windSpeed = "Wind " + MathUtil.getNoDecimal(weather.getWindPOJO().getSpeed()) + " m/s";
 
-        holder.mTvCity.setText(weather.getCityName());
+        holder.mTvCity.setText(weather.getName());
         holder.mTvTemp.setText(temp);
         holder.mTvWindSpeed.setText(windSpeed);
-        holder.mTvWeatherDesc.setText(weather.getWeatherDescription());
+        holder.mTvWeatherDesc.setText(weather.getWeather().get(0).getDescription());
 
     }
 
@@ -56,7 +57,7 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
         return mList.size();
     }
 
-    public void replaceData(List<Weather> weathers) {
+    public void replaceData(List<WeatherResponse> weathers) {
         mList = weathers;
         notifyDataSetChanged();
     }
@@ -81,13 +82,13 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
         @Override
         public void onClick(View v) {
             int position = getAdapterPosition();
-            Weather weather = mList.get(position);
+            WeatherResponse weather = mList.get(position);
 
             mListener.onWeatherItemClick(weather);
         }
     }
 
     public interface WeatherItemListener {
-        void onWeatherItemClick(Weather item);
+        void onWeatherItemClick(WeatherResponse item);
     }
 }

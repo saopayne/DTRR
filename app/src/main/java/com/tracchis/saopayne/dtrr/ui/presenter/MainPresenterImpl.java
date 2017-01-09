@@ -1,15 +1,18 @@
 package com.tracchis.saopayne.dtrr.ui.presenter;
 
 
-import com.tracchis.saopayne.dtrr.data.model.Weather;
-import com.tracchis.saopayne.dtrr.data.remote.service.WeatherApi;
-import com.tracchis.saopayne.dtrr.data.remote.service.WeatherServiceImpl;
+
+import com.tracchis.saopayne.dtrr.data.model.ResponsePOJO;
+import com.tracchis.saopayne.dtrr.data.model.WeatherResponse;
+import com.tracchis.saopayne.dtrr.data.remote.service.SOService;
+
 import com.tracchis.saopayne.dtrr.ui.BasePresenter;
 import com.tracchis.saopayne.dtrr.ui.activities.MainView;
 import com.tracchis.saopayne.dtrr.util.EspressoIdlingResource;
 
-import java.util.List;
-
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
@@ -19,40 +22,42 @@ import java.util.List;
 public class MainPresenterImpl extends BasePresenter implements MainPresenter {
 
     private final MainView mView;
-    private final WeatherServiceImpl mWeatherApi;
+    private final SOService mWeatherApi;
 
-    public MainPresenterImpl(MainView view, WeatherServiceImpl weatherApi) {
+    public MainPresenterImpl(MainView view, SOService weatherApi) {
         mView = view;
         mWeatherApi = weatherApi;
     }
 
     @Override
     public void loadWeatherData() {
-
         mView.showProgress();
-
         EspressoIdlingResource.increment();
-
-        mWeatherApi.getAllWeathers(new WeatherApi.WeatherServiceCallback<List<Weather>>() {
+        Call<ResponsePOJO> getWeatherData = mWeatherApi.getWeatherDetails();
+        getWeatherData.enqueue(new Callback<ResponsePOJO>() {
 
             @Override
-            public void onSuccess(List<Weather> weathers) {
+            public void onResponse(Response<ResponsePOJO> response) {
                 EspressoIdlingResource.decrement();
                 mView.hideProgress();
-                mView.showWeathers(weathers);
+                if (response.body()!=null){
+                    mView.showWeathers(response.body());
+                }
             }
 
             @Override
-            public void onFailure() {
+            public void onFailure(Throwable t) {
                 EspressoIdlingResource.decrement();
                 mView.showConnectionError();
                 mView.hideProgress();
             }
+
         });
     }
 
+
     @Override
-    public void clickWeatherItem(Weather item) {
+    public void clickWeatherItem(WeatherResponse item) {
         mView.showWeatherClickedMessage(item);
     }
 }

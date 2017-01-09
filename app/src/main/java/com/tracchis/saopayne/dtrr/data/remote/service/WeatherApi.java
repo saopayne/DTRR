@@ -1,6 +1,7 @@
 package com.tracchis.saopayne.dtrr.data.remote.service;
 
-import com.tracchis.saopayne.dtrr.data.model.Weather;
+
+import com.tracchis.saopayne.dtrr.data.model.WeatherResponse;
 
 import java.util.List;
 
@@ -9,10 +10,11 @@ import java.util.List;
  */
 public interface WeatherApi {
 
-    interface WeatherServiceCallback<T>{
+    interface WeatherServiceCallback<T> {
         void onSuccess(T weathers);
+
         void onFailure();
     }
 
-    void getAllWeathers(WeatherServiceCallback<List<Weather>> callback);
+    void getAllWeathers(WeatherServiceCallback<List<WeatherResponse>> callback);
 }
